@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	font-family: Silkscreen;
+}
+
+@layer components {
+	.pixel-btn {
+		@apply shadow-[-3px_0_0_0_black,3px_0_0_0_black,0_-3px_0_0_black,0_3px_0_0_black,0_3px_0_3px_gray,0_9px_0_0_gray] p-4;
+	}
+	.pixel-btn:active {
+		@apply shadow-[-3px_0_0_0_black,3px_0_0_0_black,0_-3px_0_0_black,0_3px_0_0_black,0_0px_0_3px_gray,0_0px_0_0_gray] p-4;
+		transform: translateY(6px);
+	}
+}

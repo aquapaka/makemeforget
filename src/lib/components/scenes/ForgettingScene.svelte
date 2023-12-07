@@ -99,7 +99,7 @@
 			duration: 500,
 			y: (innerHeight / 20) * ($isInvertTransition ? -1 : 1)
 		}}
-		class="absolute top-[30%] -translate-y-1/2 left-[50%] -translate-x-1/2 w-full max-w-[700px] mx-auto p-4"
+		class="absolute top-[50%] md:top-[45%] lg:top-[30%] -translate-y-1/2 left-[50%] -translate-x-1/2 w-full max-w-[700px] mx-auto p-4"
 	>
 		<div class="bg-red-500 p-4 pixel-btn text-white">
 			<h1 class="text-[2rem]">Error 422</h1>
@@ -125,7 +125,7 @@
 				on:mousedown={() => {
 					clickSound.play();
 				}}
-				class="pixel-btn mt-8 ml-2 bg-slate-100 text-black"
+				class="pixel-btn mt-8 sm:ml-2 bg-slate-100 text-black"
 				on:click={() => {
 					$appState = AppState.WaitingForStart;
 					$whoToForget = '';
@@ -138,7 +138,7 @@
 					on:mousedown={() => {
 						clickSound.play();
 					}}
-					class="pixel-btn mt-8 ml-2 bg-slate-100 text-black float-right">Contact me</button
+					class="pixel-btn mt-6 sm:ml-2 bg-slate-100 text-black md:float-right">Contact me</button
 				>
 			</a>
 		</div>

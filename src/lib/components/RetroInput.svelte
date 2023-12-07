@@ -7,7 +7,7 @@
 		class="bg-transparent text-center text-[3rem] outline-none {$appState ===
 		AppState.SelectWhoToForget
 			? 'focus:underline'
-			: ''} underline-offset-[12px] decoration-4 decoration-dashed decoration-clone"
+			: ''} underline-offset-[12px] decoration-4 decoration-dashed decoration-clone w-full"
 		type="text"
 		name=""
 		id=""

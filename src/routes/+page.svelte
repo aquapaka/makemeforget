@@ -16,7 +16,7 @@
 		<div
 			class="absolute top-[25%] -translate-y-1/2 text-center w-full"
 			in:fly={{
-				delay: 1000,
+				delay: 2000,
 				duration: 2000,
 				y: (-innerHeight / 6) * ($isInvertTransition ? -1 : 1)
 			}}
@@ -31,7 +31,7 @@
 		<div
 			class="absolute top-[50%] -translate-y-1/2 w-full text-center"
 			in:fly={{
-				delay: 1000,
+				delay: 3000,
 				duration: 1000,
 				y: (innerHeight / 6) * ($isInvertTransition ? -1 : 1)
 			}}
@@ -57,7 +57,7 @@
 
 	<!-- Select who to forget -->
 	{#if $appState === AppState.SelectWhoToForget}
-		<div class="absolute top-[25%] -translate-y-1/2 text-center w-full">
+		<div class="absolute top-[20%] md:top-[25%] -translate-y-1/2 text-center w-full">
 			<h1
 				class="text-[2rem]"
 				in:typewriter={{ delay: 1800, speed: 1.5 }}
@@ -109,7 +109,7 @@
 
 	<!-- Confirmation -->
 	{#if $appState === AppState.Confirmation}
-		<div class="absolute top-[25%] -translate-y-1/2 text-center w-full">
+		<div class="absolute top-[15%] md:top-[25%] -translate-y-1/2 text-center w-full">
 			<h1
 				class="text-[2rem]"
 				in:typewriter={{ delay: 1000, speed: 1.5 }}

@@ -1,7 +1,6 @@
 <script>
 	import sound0 from '$lib/assets/images/speaker_0.png';
 	import sound2 from '$lib/assets/images/speaker_2.png';
-	import flower from '$lib/assets/in love with a ghost   flowers feat. nori.mp3';
 	import { AppState, appState } from '$lib/stores/mainStores';
 	import { fly } from 'svelte/transition';
 

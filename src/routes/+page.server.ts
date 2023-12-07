@@ -1,0 +1,25 @@
+import forgetApi from '$lib/server/apis/forgetApi.js';
+
+export async function load() {
+	const totalToday = await forgetApi.getTotalForgetToday();
+
+	return {
+		totalToday
+	};
+}
+
+export const actions = {
+	default: async function ({ request }) {
+		const data = await request.formData();
+
+		const forgetName = data.get('forget_name') as string;
+
+		if (forgetName.trim().length > 0) {
+			forgetApi.addNewForget({
+				forget_name: forgetName
+			});
+		} else {
+			console.log('[WARN] Forget name is empty');
+		}
+	}
+};

@@ -4,7 +4,7 @@
 
 <div>
 	<input
-		class="bg-transparent text-center text-[3rem] outline-none {$appState ===
+		class="bg-transparent text-center text-[2rem] md:text-[3rem] text-black disabled:text-black outline-none {$appState ===
 		AppState.SelectWhoToForget
 			? 'focus:underline'
 			: ''} underline-offset-[12px] decoration-4 decoration-dashed decoration-clone w-full"

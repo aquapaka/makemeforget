@@ -9,13 +9,15 @@
 	import { tweened } from 'svelte/motion';
 	import { fly, slide } from 'svelte/transition';
 
+	export let totalToday = 0;
+
 	let content = `Forgetting ${$whoToForget}, please wait...`;
 	const progressPercentage = tweened(0, {
 		duration: 300
 	});
 	let isError = false;
 
-	let interval: number;
+	let interval: NodeJS.Timeout;
 	setTimeout(() => {
 		interval = setInterval(() => {
 			progressPercentage.update((value) => {
@@ -37,10 +39,10 @@
 </script>
 
 <div
-	class="absolute top-[30%] -translate-y-1/2 left-[50%] -translate-x-1/2 w-full max-w-[1200px] mx-auto p-4"
+	class="absolute top-[40%] md:top-[30%] -translate-y-1/2 left-[50%] -translate-x-1/2 w-full max-w-[1200px] mx-auto p-3"
 >
 	<h1
-		class="text-[2rem]"
+		class="text-[1rem] md:text-[2rem]"
 		in:typewriter={{ delay: 1000, speed: 1.5 }}
 		out:fly={{
 			delay: 100,
@@ -141,6 +143,11 @@
 					class="pixel-btn mt-6 sm:ml-2 bg-slate-100 text-black md:float-right">Contact me</button
 				>
 			</a>
+			<p class="mt-7 text-[0.75rem]">
+				People have tried to forget <strong>{totalToday + 1}</strong> time{totalToday > 1
+					? 's'
+					: ''} today.
+			</p>
 		</div>
 	</div>
 {/if}

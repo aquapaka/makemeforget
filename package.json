@@ -32,6 +32,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"svelte-sound": "^0.6.0"
+		"@supabase/supabase-js": "^2.39.0",
+		"@types/howler": "^2.2.11",
+		"howler": "^2.2.4"
 	}
 }

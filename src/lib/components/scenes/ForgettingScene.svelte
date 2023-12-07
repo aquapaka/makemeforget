@@ -28,8 +28,8 @@
 				}
 				return newValue;
 			});
-		}, 50);
-	}, 700);
+		}, 500);
+	}, 7000);
 
 	onDestroy(() => {
 		clearInterval(interval);

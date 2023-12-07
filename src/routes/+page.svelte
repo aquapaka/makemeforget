@@ -37,12 +37,16 @@
 		</div>
 		<div
 			class="absolute top-[50%] -translate-y-1/2 w-full text-center"
+			in:fly={{
+				delay: 1000,
+				duration: 1000,
+				y: (innerHeight / 6) * ($isInvertTransition ? -1 : 1)
+			}}
 			out:fly={{
 				delay: 100,
 				duration: 1000,
 				y: (innerHeight / 6) * ($isInvertTransition ? -1 : 1)
 			}}
-			in:fly={{ delay: 100, duration: 1000, x: (-innerWidth / 2) * ($isInvertTransition ? -1 : 1) }}
 		>
 			<button
 				class="pixel-btn"
@@ -74,7 +78,7 @@
 		<div
 			class="absolute top-[35%] -translate-y-1/2 text-center w-full"
 			in:fly={{
-				delay: 4000,
+				delay: 4500,
 				duration: 1000,
 				y: (innerHeight / 30) * ($isInvertTransition ? -1 : 1)
 			}}
@@ -93,7 +97,7 @@
 			}}
 		>
 			<button
-				disabled={$whoToForget.trim().length <= 3}
+				disabled={$whoToForget.trim().length < 3}
 				class="pixel-btn"
 				on:click={() => {
 					$appState = AppState.Confirmation;
@@ -150,7 +154,6 @@
 			}}
 		>
 			<button
-				disabled={$whoToForget.trim().length <= 3}
 				class="pixel-btn"
 				on:click={() => {
 					$appState = AppState.SelectWhoToForget;
@@ -158,8 +161,7 @@
 				}}>Nah :&#40;</button
 			>
 			<button
-				disabled={$whoToForget.trim().length <= 3}
-				class="pixel-btn bg-red-400 ml-2"
+				class="pixel-btn bg-red-500 text-slate-100 ml-2"
 				on:click={() => {
 					$appState = AppState.Forgetting;
 					$isInvertTransition = false;

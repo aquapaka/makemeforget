@@ -10,7 +10,6 @@ export default function thinking(node: HTMLElement) {
 			node.textContent = node.textContent!.substring(0, node.textContent!.length - 3);
 			dotCount = 1;
 		}
-		console.log('Thinking Interval running: ' + node.textContent);
 		node.append('.');
 	}, 500);
 

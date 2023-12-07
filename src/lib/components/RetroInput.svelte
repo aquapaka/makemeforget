@@ -1,20 +1,18 @@
 <script>
-	import { whoToForget, appState, AppState } from '$lib/stores/mainStores';
-
-	let isFocusing = false;
+	import { AppState, appState, whoToForget } from '$lib/stores/mainStores';
 </script>
 
-<div
-	tabindex="0"
-	on:focus={() => {
-		if ($appState === AppState.SelectWhoToForget) {
-			isFocusing = true;
-		}
-	}}
-	on:blur={() => {
-		isFocusing = false;
-	}}
->
-	<span class="text-[3rem]">{$whoToForget}</span>
-	<span class="input-cursor {!isFocusing ? 'hidden' : ''}" />
+<div>
+	<input
+		class="bg-transparent text-center text-[3rem] outline-none {$appState ===
+		AppState.SelectWhoToForget
+			? 'focus:underline'
+			: ''} underline-offset-[12px] decoration-4 decoration-dashed decoration-clone"
+		type="text"
+		name=""
+		id=""
+		bind:value={$whoToForget}
+		placeholder="enter name"
+		disabled={$appState !== AppState.SelectWhoToForget}
+	/>
 </div>

@@ -10,14 +10,14 @@
 
 @layer components {
 	.pixel-btn {
-		@apply shadow-[-3px_0_0_0_black,3px_0_0_0_black,0_-3px_0_0_black,0_3px_0_0_black,0_3px_0_3px_gray,0_9px_0_0_gray] p-4 px-6;
+		@apply shadow-[-3px_0_0_0_black,3px_0_0_0_black,0_-3px_0_0_black,0_3px_0_0_black,0_3px_0_3px_rgba(0,0,0,0.3),0_9px_0_0_rgba(0,0,0,0.3)] p-4 px-6;
 	}
 	.pixel-btn:disabled {
-		@apply shadow-[-3px_0_0_0_gray,3px_0_0_0_gray,0_-3px_0_0_gray,0_3px_0_0_gray,0_3px_0_3px_gray,0_9px_0_0_gray] p-4 px-6;
+		@apply shadow-[-3px_0_0_0_gray,3px_0_0_0_gray,0_-3px_0_0_gray,0_3px_0_0_gray,0_3px_0_3px_rgba(0,0,0,0.3),0_9px_0_0_rgba(0,0,0,0.3)] p-4 px-6;
 		color: gray;
 	}
 	.pixel-btn:enabled:active {
-		@apply shadow-[-3px_0_0_0_black,3px_0_0_0_black,0_-3px_0_0_black,0_3px_0_0_black,0_0px_0_3px_gray,0_0px_0_0_gray] p-4 px-6;
+		@apply shadow-[-3px_0_0_0_black,3px_0_0_0_black,0_-3px_0_0_black,0_3px_0_0_black,0_0px_0_3px_rgba(0,0,0,0.2),0_0px_0_0_rgba(0,0,0,0.3)] p-4 px-6;
 		transform: translateY(6px);
 	}
 	.input-cursor {

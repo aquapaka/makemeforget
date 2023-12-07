@@ -3,6 +3,7 @@
 	import { AppState, appState, whoToForget, isInvertTransition } from '$lib/stores/mainStores';
 	import typewriter from '$lib/transitions/typewriter';
 	import RetroInput from '$lib/components/RetroInput.svelte';
+	import ForgettingScene from '$lib/components/scenes/ForgettingScene.svelte';
 
 	let innerWidth = 0;
 	let innerHeight = 0;
@@ -10,6 +11,7 @@
 	$: {
 		console.log(innerWidth);
 		console.log($whoToForget);
+		console.log(AppState[$appState]);
 	}
 </script>
 
@@ -158,12 +160,14 @@
 			<button
 				disabled={$whoToForget.trim().length <= 3}
 				class="pixel-btn bg-red-400 ml-2"
-				on:click={() => () => {
-					$appState = AppState.SelectWhoToForget;
+				on:click={() => {
+					$appState = AppState.Forgetting;
 					$isInvertTransition = false;
 				}}>Sure</button
 			>
 		</div>
 	{/if}
-	<!-- {#if $appState === AppState.Confirmation}{/if} -->
+
+	<!-- Forgetting -->
+	{#if $appState === AppState.Forgetting}<ForgettingScene />{/if}
 </div>

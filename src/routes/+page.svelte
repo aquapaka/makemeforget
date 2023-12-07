@@ -4,18 +4,8 @@
 	import typewriter from '$lib/transitions/typewriter';
 	import RetroInput from '$lib/components/RetroInput.svelte';
 	import ForgettingScene from '$lib/components/scenes/ForgettingScene.svelte';
-
-	let innerWidth = 0;
-	let innerHeight = 0;
-
-	$: {
-		console.log(innerWidth);
-		console.log($whoToForget);
-		console.log(AppState[$appState]);
-	}
+	import { clickSound } from '$lib/sounds/sounds';
 </script>
-
-<svelte:window bind:innerWidth bind:innerHeight />
 
 <div class="relative h-screen bg-slate-100 overflow-hidden">
 	<!-- Waiting for start -->
@@ -49,6 +39,9 @@
 			}}
 		>
 			<button
+				on:mousedown={() => {
+					clickSound.play();
+				}}
 				class="pixel-btn"
 				on:click={() => {
 					$appState = AppState.SelectWhoToForget;
@@ -97,6 +90,9 @@
 			}}
 		>
 			<button
+				on:mousedown={() => {
+					clickSound.play();
+				}}
 				disabled={$whoToForget.trim().length < 3}
 				class="pixel-btn"
 				on:click={() => {
@@ -154,6 +150,9 @@
 			}}
 		>
 			<button
+				on:mousedown={() => {
+					clickSound.play();
+				}}
 				class="pixel-btn"
 				on:click={() => {
 					$appState = AppState.SelectWhoToForget;
@@ -161,6 +160,9 @@
 				}}>Nah :&#40;</button
 			>
 			<button
+				on:mousedown={() => {
+					clickSound.play();
+				}}
 				class="pixel-btn bg-red-500 text-slate-100 ml-2"
 				on:click={() => {
 					$appState = AppState.Forgetting;

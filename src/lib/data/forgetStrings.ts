@@ -96,7 +96,6 @@ export default [
 	'Sifting through the sands of time to sift out the grains of their memory',
 	'Blowing away the remnants of their memory with the winds of renewal',
 	'Releasing the grasp of their memory like petals falling from a flower',
-	'Completing forget them',
 	'Vanquishing the shadows of their memory from the caverns of my mind',
 	'Breaking the ties that bind their memory to the roots of my thoughts',
 	'Dissolving their memory in the vast ocean of forgetfulness',

@@ -7,7 +7,7 @@ export enum AppState {
 	Forgetting
 }
 
-export const appState = writable<AppState>(AppState.WaitingForStart);
+export const appState = writable<AppState>(AppState.Forgetting);
 
 export const isInvertTransition = writable<boolean>(false);
 export const whoToForget = writable<string>('');

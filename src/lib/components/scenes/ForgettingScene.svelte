@@ -1,6 +1,7 @@
-<script>
+<script lang="ts">
 	import thinking from '$lib/actions/thinking';
 	import forgetStrings from '$lib/data/forgetStrings';
+	import { clickSound, errorSound } from '$lib/sounds/sounds';
 	import { AppState, appState, isInvertTransition, whoToForget } from '$lib/stores/mainStores';
 	import typewriter from '$lib/transitions/typewriter';
 	import { onDestroy } from 'svelte';
@@ -14,20 +15,25 @@
 	});
 	let isError = false;
 
+	let interval: number;
 	setTimeout(() => {
-		const interval = setInterval(() => {
-			progressPercentage.update((value) => value + Math.pow(3, Math.round(Math.random() * 3)) / 10);
-			if ($progressPercentage > 98) {
-				$progressPercentage = 98;
-				isError = true;
-				clearInterval(interval);
-			}
-		}, 5);
-
-		onDestroy(() => {
-			clearInterval(interval);
-		});
+		interval = setInterval(() => {
+			progressPercentage.update((value) => {
+				let newValue = value + Math.pow(3, Math.round(Math.random() * 3) / 10);
+				if (newValue > 98) {
+					newValue = 98;
+					isError = true;
+					clearInterval(interval);
+					errorSound.play();
+				}
+				return newValue;
+			});
+		}, 50);
 	}, 700);
+
+	onDestroy(() => {
+		clearInterval(interval);
+	});
 </script>
 
 <div
@@ -85,7 +91,7 @@
 {#if isError}
 	<div
 		in:fly|global={{
-			duration: 200,
+			duration: 300,
 			easing: elasticOut,
 			x: (-innerWidth / 30) * ($isInvertTransition ? -1 : 1)
 		}}
@@ -105,6 +111,9 @@
 				If the error still persists, it might be because you couldn't forget {$whoToForget}.
 			</p>
 			<button
+				on:mousedown={() => {
+					clickSound.play();
+				}}
 				class="pixel-btn mt-8 bg-slate-100 text-black"
 				on:click={() => {
 					$appState = AppState.Confirmation;
@@ -113,6 +122,9 @@
 				}}>Try again</button
 			>
 			<button
+				on:mousedown={() => {
+					clickSound.play();
+				}}
 				class="pixel-btn mt-8 ml-2 bg-slate-100 text-black"
 				on:click={() => {
 					$appState = AppState.WaitingForStart;
@@ -122,7 +134,12 @@
 				}}>Exit</button
 			>
 			<a href="https://aquapaka.github.io/" target="_blank">
-				<button class="pixel-btn mt-8 ml-2 bg-slate-100 text-black float-right">Contact me</button>
+				<button
+					on:mousedown={() => {
+						clickSound.play();
+					}}
+					class="pixel-btn mt-8 ml-2 bg-slate-100 text-black float-right">Contact me</button
+				>
 			</a>
 		</div>
 	</div>

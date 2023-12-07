@@ -103,7 +103,7 @@
 	>
 		<div class="bg-red-500 p-4 pixel-btn text-white">
 			<h1 class="text-[2rem]">Error 422</h1>
-			<p class="mt-2">Oh no :0</p>
+			<p class="mt-2">Oh no :O</p>
 			<p class="mt-2">I've stopped the process because something went wrong.</p>
 			<p>Don't worry, none of your memories are lost.</p>
 			<p class="mt-2">You can try to forget again by clicking the button below.</p>
@@ -118,7 +118,7 @@
 				on:click={() => {
 					$appState = AppState.Confirmation;
 					isError = false;
-					$isInvertTransition = false;
+					$isInvertTransition = true;
 				}}>Try again</button
 			>
 			<button

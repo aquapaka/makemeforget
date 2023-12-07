@@ -1,13 +1,16 @@
 <script lang="ts">
-	import { fly } from 'svelte/transition';
-	import { AppState, appState, whoToForget, isInvertTransition } from '$lib/stores/mainStores';
-	import typewriter from '$lib/transitions/typewriter';
+	import MusicController from '$lib/components/MusicController.svelte';
 	import RetroInput from '$lib/components/RetroInput.svelte';
 	import ForgettingScene from '$lib/components/scenes/ForgettingScene.svelte';
-	import { clickSound } from '$lib/sounds/sounds';
+	import { clickSound, flowerMusic } from '$lib/sounds/sounds';
+	import { AppState, appState, isInvertTransition, whoToForget } from '$lib/stores/mainStores';
+	import typewriter from '$lib/transitions/typewriter';
+	import { fly } from 'svelte/transition';
 </script>
 
 <div class="relative h-screen bg-slate-100 overflow-hidden">
+	<MusicController />
+
 	<!-- Waiting for start -->
 	{#if $appState === AppState.WaitingForStart}
 		<div
@@ -41,6 +44,7 @@
 			<button
 				on:mousedown={() => {
 					clickSound.play();
+					flowerMusic.play();
 				}}
 				class="pixel-btn"
 				on:click={() => {

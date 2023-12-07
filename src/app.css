@@ -8,6 +8,14 @@
 	font-family: Silkscreen;
 }
 
+@layer base {
+	img.pixel-art {
+		image-rendering: pixelated;
+		image-rendering: -moz-crisp-edges;
+		image-rendering: crisp-edges;
+	}
+}
+
 @layer components {
 	.pixel-btn {
 		@apply shadow-[-3px_0_0_0_black,3px_0_0_0_black,0_-3px_0_0_black,0_3px_0_0_black,0_3px_0_3px_rgba(0,0,0,0.3),0_9px_0_0_rgba(0,0,0,0.3)] p-4 px-6;

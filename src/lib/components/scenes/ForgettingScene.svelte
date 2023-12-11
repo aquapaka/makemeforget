@@ -21,7 +21,7 @@
 	setTimeout(() => {
 		interval = setInterval(() => {
 			progressPercentage.update((value) => {
-				let newValue = value + Math.pow(3, Math.round(Math.random() * 3) / 10);
+				let newValue = value + Math.pow(2, Math.random() * 4) / 8;
 				if (newValue > 98) {
 					newValue = 98;
 					isError = true;
@@ -30,8 +30,8 @@
 				}
 				return newValue;
 			});
-		}, 500);
-	}, 7000);
+		}, 300);
+	}, 1000);
 
 	onDestroy(() => {
 		clearInterval(interval);

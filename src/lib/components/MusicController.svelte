@@ -23,7 +23,7 @@
 	}
 </script>
 
-{#if $appState !== AppState.WaitingForStart}
+{#if $appState !== AppState.WaitingForStart && $appState !== AppState.Loading}
 	<div
 		in:fly={{
 			delay: 2000,

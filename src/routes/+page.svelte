@@ -17,7 +17,7 @@
 
 	onMount(() => {
 		checkLoading(() => {
-			// $appState = AppState.WaitingForStart;
+			$appState = AppState.WaitingForStart;
 		});
 	});
 </script>

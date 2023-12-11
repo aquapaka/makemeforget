@@ -20,10 +20,12 @@
 	let interval: NodeJS.Timeout;
 	setTimeout(() => {
 		interval = setInterval(() => {
+			const errorPercent = 90 + Math.round(Math.random() * 9);
+
 			progressPercentage.update((value) => {
-				let newValue = value + Math.pow(2, Math.random() * 4) / 8;
-				if (newValue > 98) {
-					newValue = 98;
+				let newValue = value + Math.pow(2, Math.random() * 4) / 6;
+				if (newValue > errorPercent) {
+					newValue = errorPercent;
 					isError = true;
 					clearInterval(interval);
 					errorSound.play();
@@ -31,7 +33,7 @@
 				return newValue;
 			});
 		}, 300);
-	}, 1000);
+	}, 7000);
 
 	onDestroy(() => {
 		clearInterval(interval);

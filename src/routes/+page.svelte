@@ -1,20 +1,32 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import LoadingScreen from '$lib/components/LoadingScreen.svelte';
 	import MusicController from '$lib/components/MusicController.svelte';
 	import RetroInput from '$lib/components/RetroInput.svelte';
 	import ForgettingScene from '$lib/components/scenes/ForgettingScene.svelte';
 	import { clickSound, flowerMusic } from '$lib/sounds/sounds';
 	import { AppState, appState, isInvertTransition, whoToForget } from '$lib/stores/mainStores';
 	import typewriter from '$lib/transitions/typewriter';
+	import checkLoading from '$lib/utils/checkLoading.js';
+	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
 	export let data;
 
 	let isPlayingMusic = false;
+
+	onMount(() => {
+		checkLoading(() => {
+			$appState = AppState.WaitingForStart;
+		});
+	});
 </script>
 
 <div class="relative h-dynamic-screen bg-slate-100 overflow-hidden">
 	<MusicController />
+	{#if $appState === AppState.Loading}
+		<LoadingScreen />
+	{/if}
 
 	<!-- Waiting for start -->
 	{#if $appState === AppState.WaitingForStart}

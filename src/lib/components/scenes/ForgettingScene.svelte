@@ -106,9 +106,9 @@
 		class="absolute top-[50%] md:top-[45%] lg:top-[30%] -translate-y-1/2 left-[50%] -translate-x-1/2 w-full max-w-[700px] mx-auto p-4"
 	>
 		<div class="bg-red-500 p-4 pixel-btn text-white">
-			<h1 class="text-[2rem]">Error 422</h1>
-			<p class="mt-2">Oh no :O</p>
-			<p class="mt-2">I've stopped the process because something went wrong.</p>
+			<h1 class="text-[2rem]">Error 404</h1>
+			<p class="mt-2">Oh no :0</p>
+			<p class="mt-2">Something went wrong.</p>
 			<p>Don't worry, none of your memories are lost.</p>
 			<p class="mt-2">You can try to forget again by clicking the button below.</p>
 			<p class="mt-2">

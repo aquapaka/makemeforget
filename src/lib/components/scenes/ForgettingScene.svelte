@@ -148,7 +148,7 @@
 			<p class="mt-7 text-[0.75rem]">
 				People have tried to forget <strong>{totalToday + 1}</strong> time{totalToday > 1
 					? 's'
-					: ''} today.
+					: ''}.
 			</p>
 		</div>
 	</div>

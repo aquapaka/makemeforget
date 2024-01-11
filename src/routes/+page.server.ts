@@ -1,7 +1,7 @@
 import forgetApi from '$lib/server/apis/forgetApi.js';
 
 export async function load() {
-	const totalToday = await forgetApi.getTotalForgetToday();
+	const totalToday = await forgetApi.getTotalForget();
 
 	return {
 		totalToday

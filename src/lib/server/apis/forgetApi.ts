@@ -30,5 +30,17 @@ export default {
 		console.log('Total :' + count);
 
 		return count ? count : -1;
-	}
+	},
+	getTotalForget: async function () {
+		const { count, error } = await supabase
+			.from('forget')
+			.select('*', { count: 'exact', head: true })
+
+		if (error) {
+			console.log(error);
+		}
+		console.log('Total :' + count);
+
+		return count ? count : -1;
+	},
 };

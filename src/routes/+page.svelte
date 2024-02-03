@@ -20,7 +20,21 @@
 			$appState = AppState.WaitingForStart;
 		});
 	});
+
+	let confirmButton: HTMLButtonElement;
+
+	function handleKeyDown(event: KeyboardEvent) {
+		const key = event.key;
+
+		if(key !== "Enter") return;
+
+		if ($appState === AppState.SelectWhoToForget) {
+			confirmButton.click();
+		}
+	}
 </script>
+
+<svelte:window on:keydown={handleKeyDown}/>
 
 <div class="relative h-dynamic-screen bg-slate-100 overflow-hidden">
 	<MusicController />
@@ -116,6 +130,7 @@
 			}}
 		>
 			<button
+				bind:this={confirmButton}
 				on:mousedown={() => {
 					clickSound.play();
 				}}

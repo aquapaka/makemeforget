@@ -11,19 +11,22 @@
 
 	export let totalToday = 0;
 
+	const TWEEN_DURATION = 300;
+
 	let content = `Forgetting ${$whoToForget}, please wait...`;
 	const progressPercentage = tweened(0, {
-		duration: 300
+		duration: TWEEN_DURATION
 	});
 	let isError = false;
 
 	let interval: NodeJS.Timeout;
+	const errorPercent = 90 + Math.round(Math.random() * 9);
+
 	setTimeout(() => {
 		interval = setInterval(() => {
-			const errorPercent = 90 + Math.round(Math.random() * 9);
-
 			progressPercentage.update((value) => {
 				let newValue = value + Math.pow(2, Math.random() * 4) / 6;
+
 				if (newValue > errorPercent) {
 					newValue = errorPercent;
 					isError = true;
@@ -31,7 +34,7 @@
 					errorSound.play();
 				}
 				return newValue;
-			});
+			}, {duration: isError ? 0 : TWEEN_DURATION});
 		}, 300);
 	}, 7000);
 

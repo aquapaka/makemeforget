@@ -30,7 +30,7 @@
 	function handleKeyDown(event: KeyboardEvent) {
 		const key = event.key;
 
-		if(key !== "Enter") return;
+		if (key !== 'Enter') return;
 
 		if ($appState === AppState.SelectWhoToForget) {
 			confirmButton.click();
@@ -38,7 +38,7 @@
 	}
 </script>
 
-<svelte:window onkeydown={handleKeyDown}/>
+<svelte:window onkeydown={handleKeyDown} />
 
 <div class="relative h-dynamic-screen bg-slate-100 overflow-hidden">
 	<MusicController />
@@ -221,5 +221,8 @@
 	{/if}
 
 	<!-- Forgetting -->
-	{#if $appState === AppState.Forgetting}<ForgettingScene totalToday={data.totalToday} />{/if}
+	{#if $appState === AppState.Forgetting}<ForgettingScene
+			total={data.total}
+			totalToday={data.totalToday}
+		/>{/if}
 </div>

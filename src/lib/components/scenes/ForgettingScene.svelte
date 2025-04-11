@@ -10,10 +10,11 @@
 	import { fly, slide } from 'svelte/transition';
 
 	interface Props {
-		totalToday?: number;
+		total: number;
+		totalToday: number;
 	}
 
-	let { totalToday = 0 }: Props = $props();
+	let { totalToday, total }: Props = $props();
 
 	const TWEEN_DURATION = 300;
 
@@ -28,17 +29,20 @@
 
 	setTimeout(() => {
 		interval = setInterval(() => {
-			progressPercentage.update((value) => {
-				let newValue = value + Math.pow(2, Math.random() * 4) / 6;
+			progressPercentage.update(
+				(value) => {
+					let newValue = value + Math.pow(2, Math.random() * 4) / 6;
 
-				if (newValue > errorPercent) {
-					newValue = errorPercent;
-					isError = true;
-					clearInterval(interval);
-					errorSound.play();
-				}
-				return newValue;
-			}, {duration: isError ? 0 : TWEEN_DURATION});
+					if (newValue > errorPercent) {
+						newValue = errorPercent;
+						isError = true;
+						clearInterval(interval);
+						errorSound.play();
+					}
+					return newValue;
+				},
+				{ duration: isError ? 0 : TWEEN_DURATION }
+			);
 		}, 300);
 	}, 7000);
 
@@ -117,7 +121,7 @@
 			<p class="mt-2">Oh no :0</p>
 			<p class="mt-2">Something went wrong.</p>
 			<p>Don't worry, none of your memories are lost.</p>
-			<p class="mt-2">You can try to forget again by clicking the button below.</p>
+			<p class="mt-2">You can try forgetting again by clicking the button below.</p>
 			<p class="mt-2">
 				If the error still persists, it might be because you couldn't forget {$whoToForget}.
 			</p>
@@ -153,9 +157,9 @@
 				>
 			</a>
 			<p class="mt-7 text-[0.75rem]">
-				People have tried to forget <strong>{totalToday + 1}</strong> time{totalToday > 1
-					? 's'
-					: ''}.
+				People have tried to forget <strong>{total}</strong> time{total > 1 ? 's' : ''}{' '}
+				(<strong>{totalToday}</strong>
+				time{totalToday > 1 ? 's' : ''} today).
 			</p>
 		</div>
 	</div>

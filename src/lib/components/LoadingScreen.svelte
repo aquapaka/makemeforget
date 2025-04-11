@@ -8,11 +8,11 @@
 		in:fade={{ delay: 1000, duration: 1000 }}
 		out:fade={{ delay: 500, duration: 1000 }}
 	>
-		<div />
-		<div />
-		<div />
-		<div />
-		<div />
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
 	</div>
 </div>
 

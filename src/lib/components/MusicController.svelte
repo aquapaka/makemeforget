@@ -1,4 +1,6 @@
 <script>
+	import { run } from 'svelte/legacy';
+
 	import sound0 from '$lib/assets/images/speaker_0.png';
 	import sound1 from '$lib/assets/images/speaker_1.png';
 	import sound2 from '$lib/assets/images/speaker_2.png';
@@ -6,11 +8,11 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { fly, slide } from 'svelte/transition';
 
-	let isShowVolumeControl = false;
-	let mainVolume = 0.5;
-	let speakerIcon = sound2;
+	let isShowVolumeControl = $state(false);
+	let mainVolume = $state(0.5);
+	let speakerIcon = $state(sound2);
 
-	$: {
+	run(() => {
 		Howler.volume(mainVolume);
 
 		if (mainVolume >= 0.5) {
@@ -20,7 +22,7 @@
 		} else {
 			speakerIcon = sound0;
 		}
-	}
+	});
 </script>
 
 {#if $appState !== AppState.WaitingForStart && $appState !== AppState.Loading}
@@ -34,10 +36,10 @@
 	>
 		<button
 			class="p-2 animate-pulse duration-300"
-			on:click={() => {
+			onclick={() => {
 				isShowVolumeControl = !isShowVolumeControl;
 			}}
-			on:blur={(e) => {
+			onblur={(e) => {
 				if (
 					e.relatedTarget &&
 					e.relatedTarget instanceof HTMLInputElement &&
@@ -66,7 +68,7 @@
 				type="range"
 				name="musicVolume"
 				id="musicVolumeSlider"
-				on:blur={(e) => {
+				onblur={(e) => {
 					if (e.relatedTarget && e.relatedTarget instanceof HTMLButtonElement) {
 						return;
 					}

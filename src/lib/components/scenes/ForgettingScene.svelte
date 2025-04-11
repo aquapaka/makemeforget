@@ -9,7 +9,11 @@
 	import { tweened } from 'svelte/motion';
 	import { fly, slide } from 'svelte/transition';
 
-	export let totalToday = 0;
+	interface Props {
+		totalToday?: number;
+	}
+
+	let { totalToday = 0 }: Props = $props();
 
 	const TWEEN_DURATION = 300;
 
@@ -17,7 +21,7 @@
 	const progressPercentage = tweened(0, {
 		duration: TWEEN_DURATION
 	});
-	let isError = false;
+	let isError = $state(false);
 
 	let interval: NodeJS.Timeout;
 	const errorPercent = 90 + Math.round(Math.random() * 9);
@@ -118,22 +122,22 @@
 				If the error still persists, it might be because you couldn't forget {$whoToForget}.
 			</p>
 			<button
-				on:mousedown={() => {
+				onmousedown={() => {
 					clickSound.play();
 				}}
 				class="pixel-btn mt-8 bg-slate-100 text-black"
-				on:click={() => {
+				onclick={() => {
 					$appState = AppState.Confirmation;
 					isError = false;
 					$isInvertTransition = true;
 				}}>Try again</button
 			>
 			<button
-				on:mousedown={() => {
+				onmousedown={() => {
 					clickSound.play();
 				}}
 				class="pixel-btn mt-8 sm:ml-2 bg-slate-100 text-black"
-				on:click={() => {
+				onclick={() => {
 					$appState = AppState.WaitingForStart;
 					$whoToForget = '';
 					isError = false;
@@ -142,7 +146,7 @@
 			>
 			<a href="https://aquapaka.github.io/" target="_blank">
 				<button
-					on:mousedown={() => {
+					onmousedown={() => {
 						clickSound.play();
 					}}
 					class="pixel-btn mt-6 sm:ml-2 bg-slate-100 text-black md:float-right">Contact me</button

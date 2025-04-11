@@ -11,9 +11,13 @@
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 
-	export let data;
+	interface Props {
+		data: any;
+	}
 
-	let isPlayingMusic = false;
+	let { data }: Props = $props();
+
+	let isPlayingMusic = $state(false);
 
 	onMount(() => {
 		checkLoading(() => {
@@ -21,7 +25,7 @@
 		});
 	});
 
-	let confirmButton: HTMLButtonElement;
+	let confirmButton: HTMLButtonElement = $state();
 
 	function handleKeyDown(event: KeyboardEvent) {
 		const key = event.key;
@@ -34,7 +38,7 @@
 	}
 </script>
 
-<svelte:window on:keydown={handleKeyDown}/>
+<svelte:window onkeydown={handleKeyDown}/>
 
 <div class="relative h-dynamic-screen bg-slate-100 overflow-hidden">
 	<MusicController />
@@ -73,7 +77,7 @@
 			}}
 		>
 			<button
-				on:mousedown={() => {
+				onmousedown={() => {
 					clickSound.play();
 					if (!isPlayingMusic) {
 						flowerMusic.play();
@@ -81,7 +85,7 @@
 					}
 				}}
 				class="pixel-btn"
-				on:click={() => {
+				onclick={() => {
 					$appState = AppState.SelectWhoToForget;
 					$isInvertTransition = false;
 				}}>Getting started</button
@@ -131,12 +135,12 @@
 		>
 			<button
 				bind:this={confirmButton}
-				on:mousedown={() => {
+				onmousedown={() => {
 					clickSound.play();
 				}}
 				disabled={$whoToForget.trim().length < 2}
 				class="pixel-btn"
-				on:click={() => {
+				onclick={() => {
 					$appState = AppState.Confirmation;
 					$isInvertTransition = false;
 				}}>Confirm</button
@@ -191,11 +195,11 @@
 			}}
 		>
 			<button
-				on:mousedown={() => {
+				onmousedown={() => {
 					clickSound.play();
 				}}
 				class="pixel-btn"
-				on:click={() => {
+				onclick={() => {
 					$appState = AppState.SelectWhoToForget;
 					$isInvertTransition = true;
 				}}>Nah :&#40;</button
@@ -203,11 +207,11 @@
 			<form class="inline" method="POST" use:enhance>
 				<input type="hidden" name="forget_name" value={$whoToForget} />
 				<button
-					on:mousedown={() => {
+					onmousedown={() => {
 						clickSound.play();
 					}}
 					class="pixel-btn bg-red-500 text-slate-100 ml-2"
-					on:click={() => {
+					onclick={() => {
 						$appState = AppState.Forgetting;
 						$isInvertTransition = false;
 					}}>Sure</button
